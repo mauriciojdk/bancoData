@@ -25,8 +25,10 @@ public class PessoaController {
     }
 
     @PostMapping
+    @RequestMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void save(@RequestBody Pessoa pessoa) {
+    public void create(@RequestBody Pessoa pessoa){
+        System.out.println("oi");
         this.pessoaRepository.save(pessoa);
     }
 
@@ -37,7 +39,6 @@ public class PessoaController {
             record.setId(pessoa.getId());
             record.setNome(pessoa.getNome());
             record.setEmail(pessoa.getEmail());
-            record.setBanco(pessoa.getBanco());
             record.setIdade(pessoa.getIdade());
             record.setDataNascimento(pessoa.getDataNascimento());
             Pessoa updated = this.pessoaRepository.save(record);
